@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Categoria implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -23,6 +25,8 @@ public class Categoria implements Serializable{
 	 *  @ManyToMany / mappedBy: pega o paeamento já feito na classe Produto de muitos para muitos
 	 *  no atributo categoria e aponta para ele.
 	 */
+	@JsonManagedReference	/*Aula 17: Para não ocorrer referência cíclica. Quando buscar uma categoria, vai trazer
+	 						 seus produtos apenas e não buscar produtos e depois suas categorias e virar um loop.*/
 	@ManyToMany(mappedBy="categorias")
 	private List<Produto> produtos = new ArrayList<>();
 	

@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Produto implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -27,6 +29,8 @@ public class Produto implements Serializable{
 	 * joinColumns: define o nome da coluna no BD do objeto que estou.
 	 * inverseJoinColumns: define o table da coluna no BD da outra tabela que faz o relacionamento.
 	 */
+	@JsonBackReference	/*Do outro lado (categorias, já foi buscado os produtos, para não virar uma referência
+	 					cíclica (loop), com a anotação informo que o produto não precisa busca as categorias.*/
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA",
 		joinColumns = @JoinColumn(name = "produto_id"),
