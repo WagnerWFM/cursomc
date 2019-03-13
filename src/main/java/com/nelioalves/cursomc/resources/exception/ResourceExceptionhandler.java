@@ -13,8 +13,11 @@ import com.nelioalves.cursomc.services.exceptions.ObjectNotFoundException;
 /*Classe auxiliar que irá interceptar as exceções*/
 @ControllerAdvice
 public class ResourceExceptionhandler {
-	
-	//Recebe as exceções e a requisição quando houver erro
+
+	/*
+	 * Recebe a exceção vinda da classe de serviços (ObjectNotFoundException.class) e 
+	 * gera/acrescenta outras exceções na resposta ao cliente.
+	 */
 	@ExceptionHandler(ObjectNotFoundException.class)
 	public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request){
 		

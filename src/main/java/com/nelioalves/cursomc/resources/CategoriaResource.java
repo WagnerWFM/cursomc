@@ -17,7 +17,7 @@ public class CategoriaResource {
 	
 	@Autowired
 	CategoriaService service;
-		
+	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<?> listar(@PathVariable Integer id) {
 		
